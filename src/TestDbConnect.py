@@ -8,8 +8,5 @@ class DbTest():
         sql = "select * from test"
         cur.execute(sql)
         rows = cur.fetchall()
-        print(rows)
-
-if __name__ == "__main__":
-    dbtest = DbTest()
-    dbtest.get()
+        #print(rows)
+        return(rows)
