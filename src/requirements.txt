@@ -1,3 +1,6 @@
 flask
 requests
 mysql-connector-python
+flask-sqlalchemy
+PyMysql
+SQLAlchemy
