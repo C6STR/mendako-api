@@ -12,7 +12,7 @@ def index():
 @app.route("/tako")
 def tako():
   return jsonify({
-    "message": "りろーどいけるね"
+    "message": "たこ野郎"
   })
 
 if __name__ == '__main__':
