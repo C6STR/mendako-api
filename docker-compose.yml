@@ -11,3 +11,10 @@ services:
     environment:
       TZ: Asia/Tokyo
     command: flask run --host 0.0.0.0 --port 5000 --debugger --reload
+  mysql:
+    build: ./mysql/
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql
+      - ./mysql/sqls:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
