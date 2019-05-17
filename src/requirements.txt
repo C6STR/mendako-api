@@ -2,5 +2,6 @@ flask
 requests
 mysql-connector-python
 flask-sqlalchemy
+Flask-Migrate
 PyMysql
 SQLAlchemy
