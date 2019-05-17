@@ -13,7 +13,7 @@ from datetime import datetime
 meta = MetaData()
 
 table = Table(
-    'books', meta,
+    'test-task', meta,
     Column('task-id', Integer, primary_key=True),
     Column('task-name', String(255), nullable=False),
     Column('types',Integer, nullable=False),
