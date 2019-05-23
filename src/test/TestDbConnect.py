@@ -8,5 +8,4 @@ class DbTest():
         sql = "select * from test"
         cur.execute(sql)
         rows = cur.fetchall()
-        #print(rows)
         return(rows)
