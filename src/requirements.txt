@@ -5,3 +5,5 @@ flask-sqlalchemy
 Flask-Migrate
 PyMysql
 SQLAlchemy
+sqlalchemy-migrate
+mysqlclient
