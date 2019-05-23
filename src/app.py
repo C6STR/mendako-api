@@ -1,8 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify,request
 import GetTaskLists
-import TestDbConnect
 import GetTask
 import PutTask
+import json
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -19,15 +19,26 @@ def get_task():
   json = getter.get_task()
   return jsonify(json)
 
-@app.route("/put-task")
-def put_task():
-  put_task = PutTask.PutTask()
+@app.route("/put-task" , methods = ['POST'])
+def index_1():
+  putter = PutTask.PutTask()
+  data = request.data.decode('utf-8')
+  putter.put_task(data)
+  data = json.loads(data)
+  return jsonify(data)
 
+#こんなもんはいらん
 @app.route("/mysql")
 def mysql():
-  db = TestDbConnect.DbTest()
-  rows = db.get()
-  return jsonify(rows)
+  pass
+  #db = TestDbConnect.DbTest()
+  #rows = db.get()
+  #return jsonify(rows)
 
-if __name__ == '__main__':
-  app.run()
+##テスト用
+@app.route("/test-post")
+def test_post():
+  print(request.json)
+
+#if __name__ == '__main__':
+#  app.run()

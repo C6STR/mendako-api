@@ -5,7 +5,7 @@ pt = PutTask.PutTask()
 
 data = {
     "task-name" : "インサートするタスク" ,
-    "type" : 1,
+    "types" : 1,
     "priority" : 1,
     "status" : 1,
     "start-daytime" : "2019-1-1",
