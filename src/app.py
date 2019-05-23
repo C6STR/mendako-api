@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 import GetTaskLists
 import TestDbConnect
+import GetTask
+import PutTask
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -12,10 +14,14 @@ def index():
   })
 
 @app.route("/get-task")
-def tako():
-  getter = GetTaskLists.GetTaskList()
-  json = getter.get_task_list()
+def get_task():
+  getter = GetTask.GetTask()
+  json = getter.get_task()
   return jsonify(json)
+
+@app.route("/put-task")
+def put_task():
+  put_task = PutTask.PutTask()
 
 @app.route("/mysql")
 def mysql():
