@@ -27,7 +27,7 @@ class PutTask():
         """
         cur.execute(sql %(
             data["task-name"] ,
-            data["type"] ,
+            data["types"] ,
             data["priority"] ,
             data["status"] ,
             data["start-daytime"] ,
