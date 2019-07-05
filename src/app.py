@@ -1,5 +1,5 @@
 from flask import Flask, jsonify,request
-import GetTaskLists
+import GetTaskList
 import GetTask
 import PutTask
 import json
@@ -20,12 +20,19 @@ def get_task():
   return jsonify(json)
 
 @app.route("/put-task" , methods = ['POST'])
-def index_1():
+def put_task():
   putter = PutTask.PutTask()
   data = request.data.decode('utf-8')
   putter.put_task(data)
   data = json.loads(data)
   return jsonify(data)
+
+@app.route("/get-tasklist" , methods = ['POST'])
+def get_tasklist():
+  getter = GetTaskList.GetTaskList()
+  data = data = request.data.decode('utf-8')
+  res = getter.get_task_list(data)
+  return jsonify(res)
 
 #こんなもんはいらん
 @app.route("/mysql")
