@@ -7,3 +7,5 @@ PyMysql
 SQLAlchemy
 sqlalchemy-migrate
 mysqlclient
+uuid
+cryptography
