@@ -3,7 +3,7 @@ user = "root"
 password = "pass"
 host = "mysql"
 port = 3306
-database = "test"
+database = "mendako"
 
 def connect():
     return mysql.connector.connect(
