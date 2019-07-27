@@ -1,4 +1,5 @@
 # -*- encoding:utf-8 -*-
+import sqlalchemy
 from sqlalchemy import *
 from migrate import *
 import enum
@@ -7,22 +8,25 @@ from sqlalchemy import (Column, String, Text, ForeignKey, \
 from sqlalchemy.schema import UniqueConstraint
 from sqlalchemy.orm import (sessionmaker, relationship, scoped_session)
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.dialects.mysql import INTEGER as Integer
+from sqlalchemy.dialects.mysql import INTEGER as Integer , BOOLEAN as Boolean
 from datetime import datetime
 
 meta = MetaData()
 
 table = Table(
-    'test-task', meta,
-    Column('task-id', Integer, primary_key=True),
+    'task', meta,
+    Column('task-id', Integer, primary_key=True , autoincrement = True),
+    Column('user_id' , String(255)),
     Column('task-name', String(255), nullable=False),
     Column('types',Integer, nullable=False),
     Column('priority',Integer , nullable=False),
     Column('status',Integer , nullable=False),
+    Column('archived' , Boolean),
     Column('start-daytime' , DATETIME , nullable=False),
     Column('end-daytime' , DATETIME , nullable=False),
+    Column('created-daytime' , DATETIME , nullable=False , server_default=sqlalchemy.text('CURRENT_TIMESTAMP')),
+    Column('updated-daytime' , DATETIME , nullable=False , server_default=sqlalchemy.text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ')),
 )
-    
 
 def upgrade(migrate_engine):
     # Upgrade operations go here. Don't create your own engine; bind

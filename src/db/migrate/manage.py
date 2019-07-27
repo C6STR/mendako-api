@@ -2,4 +2,4 @@
 from migrate.versioning.shell import main
 
 if __name__ == '__main__':
-    main(debug='False' ,  url='mysql+pymysql://root:pass@mysql/test?charset=utf8', repository='.')
+    main(debug='False' ,  url='mysql+pymysql://root:pass@mysql/mendako?charset=utf8', repository='.')
