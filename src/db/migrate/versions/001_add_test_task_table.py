@@ -15,17 +15,17 @@ meta = MetaData()
 
 table = Table(
     'task', meta,
-    Column('task-id', Integer, primary_key=True , autoincrement = True),
+    Column('task_id', Integer, primary_key=True , autoincrement = True),
     Column('user_id' , String(255)),
-    Column('task-name', String(255), nullable=False),
-    Column('types',Integer, nullable=False),
+    Column('task_name', String(255), nullable=False),
+    Column('type',Integer, nullable=False),
     Column('priority',Integer , nullable=False),
-    Column('status',Integer , nullable=False),
+    Column('status',Integer , nullable=False , server_default = "0"),
     Column('archived' , Boolean),
-    Column('start-daytime' , DATETIME , nullable=False),
-    Column('end-daytime' , DATETIME , nullable=False),
-    Column('created-daytime' , DATETIME , nullable=False , server_default=sqlalchemy.text('CURRENT_TIMESTAMP')),
-    Column('updated-daytime' , DATETIME , nullable=False , server_default=sqlalchemy.text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ')),
+    Column('start_daytime' , DATETIME , nullable=False),
+    Column('end_daytime' , DATETIME , nullable=False),
+    Column('created_daytime' , DATETIME , nullable=False , server_default=sqlalchemy.text('CURRENT_TIMESTAMP')),
+    Column('updated_daytime' , DATETIME , nullable=False , server_default=sqlalchemy.text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ')),
 )
 
 def upgrade(migrate_engine):
