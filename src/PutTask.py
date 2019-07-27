@@ -5,9 +5,9 @@ class PutTask():
     def __init__(self):
         self.db = Db.connect()
 
-    def put_task(self , data):
+    def put_task(self , json_data):
         cur = self.db.cursor()
-        data = json.loads(data)
+        data = json.loads(json_data)
         sql = """
             insert into `task`(
                 user_id ,
