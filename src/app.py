@@ -16,6 +16,7 @@ def index():
     "message": "テスト!!"
   })
 
+## タスク管理
 # タスク取得
 @app.route("/get-task")
 def get_task():
@@ -40,6 +41,7 @@ def get_tasklist():
   res = getter.get_task_list(data)
   return jsonify(res)
 
+## ユーザー管理
 # ユーザー登録
 @app.route("/user-register" , methods = ['POST'])
 def user_register():
