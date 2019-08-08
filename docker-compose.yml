@@ -11,6 +11,8 @@ services:
     environment:
       TZ: Asia/Tokyo
     command: flask run --host 0.0.0.0 --port 5000 --debugger --reload
+    networks:
+      - mendako_main
   mysql:
     build: ./mysql/
     volumes:
@@ -18,3 +20,8 @@ services:
       - ./mysql/sqls:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=pass
+    networks: 
+     - "mendako_main"
+networks:
+  mendako_main:
+    external: true
