@@ -1,13 +1,14 @@
 from flask import Flask, jsonify,request
 import json
+from flask_cors import CORS
 
-import GetTaskList
+import GetTaskLists
 import GetTask
 import PutTask
-
 import UserRegister
 
 app = Flask(__name__)
+CORS(app)
 app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
@@ -36,7 +37,7 @@ def put_task():
 # タスク一覧取得
 @app.route("/get-tasklist" , methods = ['POST'])
 def get_tasklist():
-  getter = GetTaskList.GetTaskList()
+  getter = GetTaskLists.GetTaskList()
   data = request.data.decode('utf-8')
   res = getter.get_task_list(data)
   return jsonify(res)

@@ -9,3 +9,4 @@ sqlalchemy-migrate
 mysqlclient
 uuid
 cryptography
+flask_cors
