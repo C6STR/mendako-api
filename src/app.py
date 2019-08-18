@@ -6,6 +6,7 @@ import GetTaskLists
 import GetTask
 import PutTask
 import UserRegister
+import UserLogin
 
 app = Flask(__name__)
 CORS(app)
@@ -50,6 +51,13 @@ def user_register():
   data = request.data.decode('utf-8')
   ur.user_register(data)
   return("ok")
+
+@app.route("/user-login" , methods = ['post'])
+def user_login():
+  ul = UserLogin.UserLogin()
+  data = request.data.decode('utf-8')
+  res = ul.user_login(data)
+  return jsonify(res)
 
 
 #

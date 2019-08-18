@@ -11,7 +11,7 @@ class UserLogin():
     data = json.loads(json_data)
 
     sql = """
-      select mail_address from user 
+      select user_id from user 
       where password = '%s' and
       mail_address = '%s'
     """
@@ -21,6 +21,10 @@ class UserLogin():
     ))
 
     rows = cur.fetchone()
+
+    # トークン生成
     token_dict = UserGenerateToken.generate_token(rows[0])
-    
+    # トークン上書き
+    UserGenerateToken.update_token(token_dict)
+
     return token_dict
