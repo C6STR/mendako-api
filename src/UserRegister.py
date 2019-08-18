@@ -3,6 +3,8 @@ import json
 import hashlib
 import uuid
 
+import UserGenerateToken
+
 class UserRegister():
     def __init__(self):
         self.db = Db.connect()
@@ -39,3 +41,8 @@ class UserRegister():
         ))
 
         self.db.commit()
+
+        # アクセストークン生成
+        access_token_dict = UserGenerateToken.generate_token(data["mail_address"])
+
+        UserGenerateToken.insert_token(user_uuid , access_token_dict["access_token"])
