@@ -49,6 +49,7 @@ def user_register():
   ur = UserRegister.UserRegister()
   data = request.data.decode('utf-8')
   ur.user_register(data)
+  return("ok")
 
 
 #
