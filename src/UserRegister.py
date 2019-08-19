@@ -3,7 +3,7 @@ import json
 import hashlib
 import uuid
 
-import UserGenerateToken
+import AccessToken
 
 class UserRegister():
     def __init__(self):
@@ -43,6 +43,6 @@ class UserRegister():
         self.db.commit()
 
         # アクセストークン生成
-        access_token_dict = UserGenerateToken.generate_token(data["mail_address"])
+        access_token_dict = AccessToken.generate_token(data["mail_address"])
 
-        UserGenerateToken.insert_token(user_uuid , access_token_dict["access_token"])
+        AccessToken.insert_token(user_uuid , access_token_dict["access_token"])

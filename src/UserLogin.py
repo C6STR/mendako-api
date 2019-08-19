@@ -1,6 +1,6 @@
 import Db
 import json
-import UserGenerateToken
+import AccessToken
 
 class UserLogin():
   def __init__(self):
@@ -23,8 +23,8 @@ class UserLogin():
     rows = cur.fetchone()
 
     # トークン生成
-    token_dict = UserGenerateToken.generate_token(rows[0])
+    token_dict = AccessToken.generate_token(rows[0])
     # トークン上書き
-    UserGenerateToken.update_token(token_dict)
+    AccessToken.update_token(token_dict)
 
     return token_dict
