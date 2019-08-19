@@ -1,6 +1,7 @@
 import uuid
 import Db
 
+# トークン生成
 def generate_token(user_id):
   # uuid
   access_token = str(uuid.uuid4())
@@ -47,3 +48,17 @@ def update_token(token_dict):
   ))
   
   db.commit()
+
+  # user_idからaccess_tokenを取得
+def get_token(user_id):
+  db = Db.connect()
+  cur = db.cursor()
+  sql = """
+    select access_token from access_token
+    where user_id = '%s'
+  """
+  cur.execute(sql %(
+    user_id
+  ))
+  rows = cur.fetchone()
+  return rows[0]
