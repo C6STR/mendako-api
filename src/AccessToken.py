@@ -49,7 +49,7 @@ def update_token(token_dict):
   
   db.commit()
 
-  # user_idからaccess_tokenを取得
+# user_idからaccess_tokenを取得
 def get_token(user_id):
   db = Db.connect()
   cur = db.cursor()

@@ -52,27 +52,10 @@ def user_register():
   ur.user_register(data)
   return("ok")
 
+# ユーザーログイン
 @app.route("/user-login" , methods = ['post'])
 def user_login():
   ul = UserLogin.UserLogin()
   data = request.data.decode('utf-8')
   res = ul.user_login(data)
   return jsonify(res)
-
-
-#
-##こんなもんはいらん
-#@app.route("/mysql")
-#def mysql():
-#  pass
-#  #db = TestDbConnect.DbTest()
-#  #rows = db.get()
-#  #return jsonify(rows)
-#
-###テスト用
-#@app.route("/test-post")
-#def test_post():
-#  print(request.json)
-#
-##if __name__ == '__main__':
-##  app.run()
