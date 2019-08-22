@@ -7,13 +7,18 @@ import GetTask
 import PutTask
 import UserRegister
 import UserLogin
+import UserAuthToken
+
+import logging
 
 app = Flask(__name__)
+app.logger.setLevel(logging.DEBUG)
 CORS(app)
 app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
 def index():
+  app.logger.error('error')
   return jsonify({
     "message": "テスト!!"
   })
@@ -59,3 +64,12 @@ def user_login():
   data = request.data.decode('utf-8')
   res = ul.user_login(data)
   return jsonify(res)
+
+# トークン確認
+@app.route("/user-checktoken" , methods = ['post'])
+def user_checktoken():
+  uat = UserAuthToken.UserAuthToken()
+  data = request.data.decode('utf-8')
+  res = uat.user_auth_token(data)
+  ret = {"status" : res}
+  return ret

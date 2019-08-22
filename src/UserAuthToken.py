@@ -1,13 +1,14 @@
 import Db
 import json
 import AccessToken
+import User
 
 class UserAuthToken():
   def __init__(self):
     self.db = Db.connect()
   
+  # ユーザーIDとトークンがあっているか
   def user_auth_token(self , json_data):
-    cur = self.db.cursor()
     data = json.loads(json_data)
     user_id = data["user_id"]
 
