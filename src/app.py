@@ -5,6 +5,7 @@ from flask_cors import CORS
 import GetTaskLists
 import GetTask
 import PutTask
+import DoneTask
 import UserRegister
 import UserLogin
 import UserAuthToken
@@ -46,6 +47,14 @@ def get_tasklist():
   getter = GetTaskLists.GetTaskList()
   data = request.data.decode('utf-8')
   res = getter.get_task_list(data)
+  return jsonify(res)
+
+#タスク完了
+@app.route("/done-task" , methods = ['POST'])
+def done_task():
+  updater = DoneTask.DoneTask()
+  data = request.data.decode('utf-8')
+  res = updater.done_task(data)
   return jsonify(res)
 
 ## ユーザー管理
