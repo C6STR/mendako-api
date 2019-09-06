@@ -24,8 +24,8 @@ table = Table(
     Column('archived' , Boolean),
     Column('start_daytime' , DATETIME , nullable=False),
     Column('end_daytime' , DATETIME , nullable=False),
-    Column('created_daytime' , DATETIME , nullable=False , server_default=sqlalchemy.text('CURRENT_TIMESTAMP')),
-    Column('updated_daytime' , DATETIME , nullable=False , server_default=sqlalchemy.text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ')),
+    Column('created_daytime' , DATETIME , nullable=True , server_default=sqlalchemy.text('CURRENT_TIMESTAMP')),
+    Column('updated_daytime' , DATETIME , nullable=True , server_default=sqlalchemy.text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ')),
 )
 
 def upgrade(migrate_engine):
