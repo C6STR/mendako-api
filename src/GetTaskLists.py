@@ -10,7 +10,7 @@ class GetTaskList():
         data = json.loads(json_data)
 
         get_task_list_sql = """
-        select task_id , task_name , type , priority , status , start_daytime , end_daytime 
+        select task_id , task_name , type , priority , status , DATE_FORMAT(start_daytime , '%%Y/%%m/%%d') , DATE_FORMAT(end_daytime ,'%%Y/%%m/%%d')
         from task 
         where user_id = '%s' and (status = 0 or status = 1)
         """
