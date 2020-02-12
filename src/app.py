@@ -49,6 +49,13 @@ def get_tasklist():
   res = getter.get_task_list(data)
   return jsonify(res)
 
+@app.route("/get-tasklist-date", methods = ['POST'])
+def get_tasklist_date():
+  getter = GetTaskLists.GetTaskList()
+  data = request.data.decode('utf-8')
+  res = getter.get_task_list_date(data)
+  return jsonify(res)
+
 #タスク完了
 @app.route("/done-task" , methods = ['POST'])
 def done_task():
