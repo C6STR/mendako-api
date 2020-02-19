@@ -5,6 +5,7 @@ from flask_cors import CORS
 import GetTaskLists
 import GetTask
 import PutTask
+import UpdateTask
 import DoneTask
 import UserRegister
 import UserLogin
@@ -40,6 +41,14 @@ def put_task():
   putter.put_task(data)
   data = json.loads(data)
   return jsonify(data)
+
+# タスク修正
+@app.route("/update-task", methods = ['POST'])
+def update_task():
+  updater = UpdateTask.UpdateTask()
+  data = request.data.decode('utf-8')
+  updater.update_task(data)
+  return "ok"
 
 # タスク一覧取得
 @app.route("/get-tasklist" , methods = ['POST'])
